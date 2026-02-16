@@ -37,10 +37,9 @@ describe('useBulkUpdateWorkflowStatus', () => {
   it('should call the API with correct parameters', async () => {
     http.post.mockResolvedValue('success');
 
-    const { result } = renderHook(
-      () => useBulkUpdateWorkflowStatus({ http, notifications }),
-      { wrapper }
-    );
+    const { result } = renderHook(() => useBulkUpdateWorkflowStatus({ http, notifications }), {
+      wrapper,
+    });
 
     result.current.mutate({
       ids: ['alert-1', 'alert-2'],
@@ -62,10 +61,9 @@ describe('useBulkUpdateWorkflowStatus', () => {
   it('should display success toast with "Alert acknowledged" when status is acknowledged', async () => {
     http.post.mockResolvedValue('success');
 
-    const { result } = renderHook(
-      () => useBulkUpdateWorkflowStatus({ http, notifications }),
-      { wrapper }
-    );
+    const { result } = renderHook(() => useBulkUpdateWorkflowStatus({ http, notifications }), {
+      wrapper,
+    });
 
     result.current.mutate({
       ids: ['alert-1'],
@@ -81,10 +79,9 @@ describe('useBulkUpdateWorkflowStatus', () => {
   it('should display success toast with "Alert unacknowledged" when status is open', async () => {
     http.post.mockResolvedValue('success');
 
-    const { result } = renderHook(
-      () => useBulkUpdateWorkflowStatus({ http, notifications }),
-      { wrapper }
-    );
+    const { result } = renderHook(() => useBulkUpdateWorkflowStatus({ http, notifications }), {
+      wrapper,
+    });
 
     result.current.mutate({
       ids: ['alert-1'],
@@ -100,10 +97,9 @@ describe('useBulkUpdateWorkflowStatus', () => {
   it('should display error toast on failure', async () => {
     http.post.mockRejectedValue(new Error('API Error'));
 
-    const { result } = renderHook(
-      () => useBulkUpdateWorkflowStatus({ http, notifications }),
-      { wrapper }
-    );
+    const { result } = renderHook(() => useBulkUpdateWorkflowStatus({ http, notifications }), {
+      wrapper,
+    });
 
     result.current.mutate({
       ids: ['alert-1'],
